@@ -446,7 +446,12 @@ recordBody
 
 block
     : '{' blockStatement* '}'
+//     | IF parExpression statement
+//     | ELSE statement
+//     | FOR '(' forControl ')' statement
+//     | WHILE parExpression statement
     ;
+
 
 blockStatement
     : localVariableDeclaration ';'
@@ -498,6 +503,8 @@ localTypeDeclaration
     : classOrInterfaceModifier*
       (classDeclaration | interfaceDeclaration | recordDeclaration)
     ;
+
+
 
 statement
     : blockLabel=block
