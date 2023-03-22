@@ -26,6 +26,6 @@ public class Main {
 Visitor l=new Visitor();
         l.visit(tree);
         // Print the original input code
-        System.out.println(charStream.toString());
+//        System.out.println(charStream.toString());
     }
 }

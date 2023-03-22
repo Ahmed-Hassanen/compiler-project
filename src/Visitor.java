@@ -6,10 +6,15 @@ public class Visitor extends JavaCodeBaseVisitor<String>{
 
     @Override
     public String visitCodeBlock(JavaCodeParser.CodeBlockContext ctx) {
-        String result = super.visitCodeBlock(ctx);
         blockNumber++;
-        System.out.println("// block number " + blockNumber);
-        System.out.println(ctx.getText());
+        String result = super.visitCodeBlock(ctx);
+        char firstChar = ctx.getText().charAt(0);
+        String remainingText = ctx.getText().substring(1);
+String comment = "// block number " + blockNumber;
+
+//        System.out.println("// block number " + blockNumber);
+
+        System.out.println(firstChar+comment+remainingText);
         return result;
     }
     @Override
