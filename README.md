@@ -12,3 +12,9 @@
 
 # Parse Tree
 ![Parse Tree](./parseTree.png)
+
+# Input File
+![Input File](./input.png)
+
+# Output File
+![Output File](./output.png)
