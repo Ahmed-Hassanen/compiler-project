@@ -16,7 +16,7 @@ public class JavaCodeLexer extends Lexer {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, Whitespace=3, Invalid=4, Any=5;
+		T__0=1, Any=2;
 	public static String[] channelNames = {
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
 	};
@@ -27,20 +27,20 @@ public class JavaCodeLexer extends Lexer {
 
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"T__0", "T__1", "Whitespace", "Invalid", "Any"
+			"T__0", "Any"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'{'", "'}'"
+			null, "'{'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, "Whitespace", "Invalid", "Any"
+			null, null, "Any"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -102,26 +102,13 @@ public class JavaCodeLexer extends Lexer {
 	public ATN getATN() { return _ATN; }
 
 	public static final String _serializedATN =
-		"\u0004\u0000\u0005\u001a\u0006\uffff\uffff\u0002\u0000\u0007\u0000\u0002"+
-		"\u0001\u0007\u0001\u0002\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002"+
-		"\u0004\u0007\u0004\u0001\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0001"+
-		"\u0002\u0004\u0002\u0011\b\u0002\u000b\u0002\f\u0002\u0012\u0001\u0002"+
-		"\u0001\u0002\u0001\u0003\u0001\u0003\u0001\u0004\u0001\u0004\u0000\u0000"+
-		"\u0005\u0001\u0001\u0003\u0002\u0005\u0003\u0007\u0004\t\u0005\u0001\u0000"+
-		"\u0002\u0002\u0000\t\t\r\r\b\u0000\t\n\r\r  09AZ__a{}}\u001a\u0000\u0001"+
-		"\u0001\u0000\u0000\u0000\u0000\u0003\u0001\u0000\u0000\u0000\u0000\u0005"+
-		"\u0001\u0000\u0000\u0000\u0000\u0007\u0001\u0000\u0000\u0000\u0000\t\u0001"+
-		"\u0000\u0000\u0000\u0001\u000b\u0001\u0000\u0000\u0000\u0003\r\u0001\u0000"+
-		"\u0000\u0000\u0005\u0010\u0001\u0000\u0000\u0000\u0007\u0016\u0001\u0000"+
-		"\u0000\u0000\t\u0018\u0001\u0000\u0000\u0000\u000b\f\u0005{\u0000\u0000"+
-		"\f\u0002\u0001\u0000\u0000\u0000\r\u000e\u0005}\u0000\u0000\u000e\u0004"+
-		"\u0001\u0000\u0000\u0000\u000f\u0011\u0007\u0000\u0000\u0000\u0010\u000f"+
-		"\u0001\u0000\u0000\u0000\u0011\u0012\u0001\u0000\u0000\u0000\u0012\u0010"+
-		"\u0001\u0000\u0000\u0000\u0012\u0013\u0001\u0000\u0000\u0000\u0013\u0014"+
-		"\u0001\u0000\u0000\u0000\u0014\u0015\u0006\u0002\u0000\u0000\u0015\u0006"+
-		"\u0001\u0000\u0000\u0000\u0016\u0017\b\u0001\u0000\u0000\u0017\b\u0001"+
-		"\u0000\u0000\u0000\u0018\u0019\t\u0000\u0000\u0000\u0019\n\u0001\u0000"+
-		"\u0000\u0000\u0002\u0000\u0012\u0001\u0006\u0000\u0000";
+		"\u0004\u0000\u0002\t\u0006\uffff\uffff\u0002\u0000\u0007\u0000\u0002\u0001"+
+		"\u0007\u0001\u0001\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0000\u0000"+
+		"\u0002\u0001\u0001\u0003\u0002\u0001\u0000\u0000\b\u0000\u0001\u0001\u0000"+
+		"\u0000\u0000\u0000\u0003\u0001\u0000\u0000\u0000\u0001\u0005\u0001\u0000"+
+		"\u0000\u0000\u0003\u0007\u0001\u0000\u0000\u0000\u0005\u0006\u0005{\u0000"+
+		"\u0000\u0006\u0002\u0001\u0000\u0000\u0000\u0007\b\t\u0000\u0000\u0000"+
+		"\b\u0004\u0001\u0000\u0000\u0000\u0001\u0000\u0000";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
