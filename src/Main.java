@@ -6,6 +6,8 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.util.Scanner;
 
+
+
 public class Main {
     public static void main(String[] args) throws Exception{
 
@@ -26,8 +28,8 @@ public class Main {
         ParseTreeWalker walker=new ParseTreeWalker();
         walker.walk(new newListener(rewriter),tree);
 
-        System.out.println(rewriter.getText());
-        BufferedWriter writer = new BufferedWriter(new FileWriter("output.java"));
+        //System.out.println(rewriter.getText());
+        BufferedWriter writer = new BufferedWriter(new FileWriter("Main.java"));
         writer.write(rewriter.getText());
         writer.close();
 
