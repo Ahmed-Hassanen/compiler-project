@@ -17,12 +17,18 @@ public class newListener extends JavaParserBaseListener {
     }
     @Override
     public void enterBlock(JavaParser.BlockContext ctx) {
+        if(blockNumber==1) {
+            rewriter.insertAfter(ctx.getStart(), "\n \t \tFileWriter outpt" + blockNumber + " = new FileWriter(\"output.txt\");\n" +
+                    "        outpt" + blockNumber + ".write(\"Block number \" +" + blockNumber + "+ \" is visited\\n\");\n" +
+                    "        outpt" + blockNumber + ".close();\n");
+        }
+        else{
+            rewriter.insertAfter(ctx.getStart(), "\n \t \tFileWriter outpt" + blockNumber + " = new FileWriter(\"output.txt\", true);\n" +
+                    "        outpt" + blockNumber + ".write(\"Block number \" +" + blockNumber + "+ \" is visited\\n\");\n" +
+                    "        outpt" + blockNumber + ".close();\n");
+        }
+            blockNumber++;
 
-                rewriter.insertAfter(ctx.getStart(),"\nFileWriter outpt"+blockNumber+" = new FileWriter(\"output.txt\", true);\n" +
-                        "        outpt"+blockNumber+".write(\"Block number \" +"+blockNumber +"+ \" is visited\\n\");\n" +
-                        "        outpt"+blockNumber+".close();\n");
-
-        blockNumber++;
     }
 
 }
