@@ -46,7 +46,7 @@ public class Main {
 
 
         Pattern pattern = Pattern.compile("\\bblock\\b", Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(myListener.rewriter2.getText());
+        Matcher matcher = pattern.matcher(myListener.branchesRewriter.getText());
 
 //        This line creates a new Pattern object using the Pattern.compile method. The pattern specifies that we want to search for the word "block", with the \b representing a word boundary, which ensures that we only match the word "block" and not words that contain "block" (e.g. "blocking"). The Pattern.CASE_INSENSITIVE flag indicates that the search should be case-insensitive
 //         search with the text
@@ -56,7 +56,7 @@ public class Main {
 
 
 
-        Generate(myListener.rewriter2.getText());
+        Generate(myListener.branchesRewriter.getText());
         String blocksPath = "htmlGenerator/blocks.txt";
 
         String branchCoveragePath = "htmlGenerator/branchCoverage.txt";
@@ -101,6 +101,7 @@ public class Main {
         while (m.find()) {
             colors.add(Integer.parseInt(m.group()));
         }
+        System.out.println(colors);
         for(int i = 1; i <= totalBlocks; i++){
             if(!colors.contains(i) && fileName == "blocks.txt" ){
                 s += "#b" + i + " \n{background-color: #FF0000;}\n";
