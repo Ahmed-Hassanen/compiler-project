@@ -41,24 +41,8 @@ public class Main {
         fileWriter.close();
 //         buffers are flushed and any system resources used by the FileWriter are released.
 
-        //compile and run java code automatic
-        Process proc = null;
-        Process proc2 = null;
-        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-        compiler.run(null, null, null, execFileObject.getPath());
-
-        try {
-
-            proc = Runtime.getRuntime().exec("javac htmlGenerator/execute.java");
-            proc.waitFor(); // wait for the compilation to complete
-            proc = Runtime.getRuntime().exec("java htmlGenerator/Main");
 
 
-
-        } catch (IOException e) {
-            System.err.println("err on execution");
-            e.printStackTrace();
-        }
 
 
         Pattern pattern = Pattern.compile("\\bblock\\b", Pattern.CASE_INSENSITIVE);
@@ -72,7 +56,7 @@ public class Main {
 
 
 
-        genHtml(myListener.rewriter2.getText());
+        Generate(myListener.rewriter2.getText());
         String blocksPath = "htmlGenerator/blocks.txt";
 
         String branchCoveragePath = "htmlGenerator/branchCoverage.txt";
@@ -130,7 +114,7 @@ public class Main {
     }
 
 
-    static void genHtml(String code) throws IOException {
+    static void Generate(String code) throws IOException {
 
         String line;
         StringBuilder sb = new StringBuilder();
