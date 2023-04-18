@@ -33,6 +33,8 @@ lexer grammar JavaLexer;
 
 // Keywords
 
+
+
 ABSTRACT:           'abstract';
 ASSERT:             'assert';
 BOOLEAN:            'boolean';

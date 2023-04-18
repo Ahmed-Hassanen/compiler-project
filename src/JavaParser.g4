@@ -313,7 +313,7 @@ literal
     | CHAR_LITERAL
     | STRING_LITERAL
     | BOOL_LITERAL
-     | NULL_LITERAL
+    | NULL_LITERAL
     | TEXT_BLOCK // Java17
     ;
 
@@ -446,12 +446,7 @@ recordBody
 
 block
     : '{' blockStatement* '}'
-//     | IF parExpression statement
-//     | ELSE statement
-//     | FOR '(' forControl ')' statement
-//     | WHILE parExpression statement
     ;
-
 
 blockStatement
     : localVariableDeclaration ';'
@@ -504,28 +499,26 @@ localTypeDeclaration
       (classDeclaration | interfaceDeclaration | recordDeclaration)
     ;
 
-
-
 statement
-    : blockLabel=block
-    | ASSERT expression (':' expression)? ';'
-    | IF parExpression statement (ELSE statement)?
-    | FOR '(' forControl ')' statement
-    | WHILE parExpression statement
-    | DO statement WHILE parExpression ';'
-    | TRY block (catchClause+ finallyBlock? | finallyBlock)
-    | TRY resourceSpecification block catchClause* finallyBlock?
-    | SWITCH parExpression '{' switchBlockStatementGroup* switchLabel* '}'
-    | SYNCHRONIZED parExpression block
-    | RETURN expression? ';'
-    | THROW expression ';'
-    | BREAK identifier? ';'
-    | CONTINUE identifier? ';'
-    | YIELD expression ';' // Java17
-    | SEMI
-    | statementExpression=expression ';'
-    | switchExpression ';'? // Java17
-    | identifierLabel=identifier ':' statement
+    : blockLabel=block  #blkStatement
+    | ASSERT expression (':' expression)? ';'       #assertStatement
+    | IF parExpression statement (ELSE statement)? # ifStatement    // can be created without braces
+    | FOR '(' forControl ')' statement              #forStatement // can be created without braces
+    | WHILE parExpression statement #whileStatement // can be created without braces
+    | DO statement WHILE parExpression ';' #doStatement
+    | TRY block (catchClause+ finallyBlock? | finallyBlock) #tryStatement
+    | TRY resourceSpecification block catchClause* finallyBlock? #try2Statement
+    | SWITCH parExpression '{' switchBlockStatementGroup* switchLabel* '}' #switchStatement
+    | SYNCHRONIZED parExpression block  #synchronizedStatement
+    | RETURN expression? ';'    #returnStatement
+    | THROW expression ';'  #throwStatement
+    | BREAK identifier? ';' #breakStatement
+    | CONTINUE identifier? ';' #continueStatement
+    | YIELD expression ';' #yeildStatement // Java17
+    | SEMI  #semiStatement
+    | statementExpression=expression ';' #expStatement
+    | switchExpression ';'? #switchExpStatement // Java17
+    | identifierLabel=identifier ':' statement #identStatement
     ;
 
 catchClause
